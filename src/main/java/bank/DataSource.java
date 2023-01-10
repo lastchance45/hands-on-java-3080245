@@ -38,12 +38,12 @@ public class DataSource {
     }
     return customer;
   }
-  public static Account getAccount(int id){
-    String sql = "Select * from Accounts where id = ?";
+  public static Account getAccount(int accountId){
+    String sql = "Select * from accounts where id = ?";
     Account account = null;
     try(Connection connection = connect();
     PreparedStatement statement = connection.prepareStatement(sql)){
-      statement.setInt(1,id);
+      statement.setInt(1,accountId);
       try(ResultSet resultSet = statement.executeQuery()){
         account = new Account(
           resultSet.getInt("id"),
